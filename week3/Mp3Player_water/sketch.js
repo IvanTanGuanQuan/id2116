@@ -1,6 +1,6 @@
 let song;
 
-let playing = 0;
+let volumeSlider;
 
 let playColor; // color(0,255,0);
 let stopColor; // color(255,0,0);
@@ -9,7 +9,7 @@ let stopColor; // color(255,0,0);
 let bgColor;
 
 function preload(){
-    song = loadSound('sounds/bell-ringing-01.mp3');
+    song = loadSound('waterSound.mp3');
 }
 
 function setup() {
@@ -20,31 +20,15 @@ function setup() {
   stopColor = color(255,0,0);
   
   bgColor = stopColor; //set default bgColor to stopColor
+  
+    volumeSlider = createSlider(0,100,0);
+  volumeSlider.position = (400,400);
+  volumeSlider.style('width','255px');
+  song.play();
 
 }
 
 function draw(){
    background(bgColor);
-}
-
-function mousePressed() {
-  if (playing === 0) {
-    play(); 
-  } else {
-    stop();
-  }
-}
-
-function play(){
-  playing = 1; 
-  bgColor = playColor;
-  
-  song.play();
-}
-
-function stop(){
-  playing = 0; 
-  bgColor = stopColor;
-  
-  song.stop();
+  song.setVolume(volumeSlider.value()/100);
 }

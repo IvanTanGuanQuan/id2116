@@ -9,7 +9,7 @@ let stopColor; // color(255,0,0);
 let bgColor;
 
 function preload(){
-    song = loadSound('waterSound.mp3');
+    song = loadSound('sounds/waterSound.mps3');
 }
 
 function setup() {
